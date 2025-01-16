@@ -41,32 +41,36 @@ Dataset ini telah diubah menjadi dua dataframe, yaitu movie_df dan rating_df, de
 
 1. movie_df
 Dataframe ini memuat data dari file movies.csv, yang mencakup informasi tentang film, seperti yang ditunjukkan dalam table di bawah ini:
-| movieId | title	                                   | genres                                      |
+
+| movieId | title                                    | genres                                      |
 |---------|------------------------------------------|---------------------------------------------|
 | 1       | Toy Story (1995)                         | Adventure-Animation-Children-Comedy-Fantasy |
 | 2       | Jumanji (1995)                           | Adventure-Children-Fantasy                  |
-| 3       | Grumpier Old Men (1995)	                 | Comedy-Romance                              |
+| 3       | Grumpier Old Men (1995)                  | Comedy-Romance                              |
 | 4       | Waiting to Exhale (1995)                 | Comedy-Drama-Romance                        |
 | 5       | Father of the Bride Part II (1995)       | Comedy                                      |
 | ......  | ........................................ | ........................................... |
 | 193581  | Black Butler: Book of the Atlantic (2017)| Action-Animation-Comedy-Fantasy             |
-| 193583	| No Game No Life: Zero (2017)	           | Animation-Comedy-Fantasy                    |
+| 193583  | No Game No Life: Zero (2017)             | Animation-Comedy-Fantasy                    |
 | 193585  | Flint (2017)                             | Drama                                       |
 | 193587  | Bungo Stray Dogs: Dead Apple (2018)      | Action-Animation                            |
-| 193609  | Andrew Dice Clay: Dice Rules (1991)		   | Comedy                                      |
+| 193609  | Andrew Dice Clay: Dice Rules (1991)      | Comedy                                      |
 
 2. rating_df
 Dataframe ini memuat sebuah data dari file ratings.csv. Pada tahap ini kolom timestamp telah dihapus karena tidak diperlukan. Dataframe rating ditunjukkan dalam tabel di bawah ini:
+
 | userId | movieId | rating |
 |--------|---------|--------|
-| 1	     | 1	     | 4.0    |
-| 1	     | 3	     | 4.0    |
-| 1	     | 6	     | 4.0    |
-| 1	     | 47	     | 5.0    |
-| 1	     | 50	     | 5.0    |
+| 1      | 1       | 4.0    |
+| 1      | 3       | 4.0    |
+| 1      | 6       | 4.0    |
+| 1      | 47      | 5.0    |
+| 1      | 50      | 5.0    |
 | ...... | ....... | ...... |
 | 610    | 166534  | 4.0    |
 | 610    | 168248  | 5.0    |
 | 610    | 168250  | 5.0    |
 | 610    | 168252  | 5.0    |
 | 610    | 170875  | 3.0    |
+
+
