@@ -112,20 +112,21 @@ Hasil dari sistem rekomendasi ini menunjukkan daftar 10 film teratas, dengan rat
 
 1. Mean Squared Error (MSE)
 
-Metode Mean Squared Error (MSE) digunakan untuk mengukur sejauh mana kesalahan dalam prediksi. Semakin kecil nilai MSE, mendekati nol, semakin baik hasil prediksi tersebut, karena menunjukkan bahwa prediksi sangat mendekati data asli. Hal ini menjadikan metode ini relevan untuk digunakan dalam evaluasi prediksi di masa mendatang. MSE juga berfungsi sebagai alat evaluasi untuk berbagai model seperti regression, moving average, weighted moving average, dan analisis trendline. Perhitungan MSE dilakukan dengan mengurangi nilai aktual dengan nilai prediksi, mengkuadratkan selisihnya, menjumlahkan seluruh hasil, lalu membaginya dengan jumlah data yang ada. Dalam proyek ini, nilai MSE yang diperoleh adalah 0.06 untuk data testing dan 0.01 untuk data train. Grafik berikut menunjukkan hasil MSE, di mana MSE pada Train mengalami penurunan, sedangkan MSE pada Test cenderung stabil dengan sedikit penurunan yang tidak signifikan
+    Metode Mean Squared Error (MSE) digunakan untuk mengukur sejauh mana kesalahan dalam prediksi. Semakin kecil nilai MSE, mendekati nol, semakin baik hasil prediksi tersebut, karena menunjukkan bahwa prediksi sangat mendekati data asli. Hal ini menjadikan metode ini relevan untuk digunakan dalam evaluasi prediksi di masa mendatang. MSE juga berfungsi sebagai alat evaluasi untuk berbagai model seperti regression, moving average, weighted moving average, dan analisis trendline. Perhitungan MSE dilakukan dengan mengurangi nilai aktual dengan nilai prediksi, mengkuadratkan selisihnya, menjumlahkan seluruh hasil, lalu membaginya dengan jumlah data yang ada. Dalam proyek ini, nilai MSE yang diperoleh adalah 0.06 untuk data testing dan 0.01 untuk data train. Grafik berikut menunjukkan hasil MSE, di mana MSE pada Train mengalami penurunan, sedangkan MSE pada Test cenderung stabil dengan sedikit penurunan yang tidak signifikan
 
-<img src="Hasil\MSE.png" style="zoom:70%;" />
+    <img src="Hasil\MSE.png" style="zoom:70%;" />
 
 2. Precision
 
-Precision mengukur ketepatan informasi yang dihasilkan oleh sistem dibandingkan dengan informasi yang dicari oleh pengguna. Dalam proyek ini, nilai precision yang dicapai adalah 1.0000 untuk data training dan 0.0986 untuk data test. Grafik di bawah ini menunjukkan hasil precision, di mana precision pada Train cenderung meningkat, sementara precision pada Test tetap stabil sepanjang pengujian.
+    Precision mengukur ketepatan informasi yang dihasilkan oleh sistem dibandingkan dengan informasi yang dicari oleh pengguna. Dalam proyek ini, nilai precision yang dicapai adalah 1.0000 untuk data training dan 0.0986 untuk data test. Grafik di bawah ini menunjukkan hasil precision, di mana precision pada Train cenderung meningkat, sementara precision pada Test tetap stabil sepanjang pengujian.
 
-<img src="Hasil\Precision.png" style="zoom:70%;" />
+    <img src="Hasil\Precision.png" style="zoom:70%;" />
 
 3. Recall 
 
-Recall menggambarkan kemampuan sistem untuk menemukan kembali informasi yang relevan. Proyek ini menghasilkan nilai recall sebesar 1.00 untuk data train dan 0.89 untuk data test. Grafik berikut menunjukkan hasil recall, dengan recall pada Train yang terus meningkat, sementara recall pada Test menunjukkan pola menurun dengan sedikit fluktuasi.
-<img src="Hasil\Recall.png" style="zoom:70%;" />
+    Recall menggambarkan kemampuan sistem untuk menemukan kembali informasi yang relevan. Proyek ini menghasilkan nilai recall sebesar 1.00 untuk data train dan 0.89 untuk data test. Grafik berikut menunjukkan hasil recall, dengan recall pada Train yang terus meningkat, sementara recall pada Test menunjukkan pola menurun dengan sedikit fluktuasi.
+
+    <img src="Hasil\Recall.png" style="zoom:70%;" />
 
 ## Conclusions
 
