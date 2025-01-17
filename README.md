@@ -74,3 +74,60 @@ Dataframe ini memuat sebuah data dari file ratings.csv. Pada tahap ini kolom tim
 | 610    | 170875  | 3.0    |
 
 
+## Data Preparation
+Berikut adalah teknik *data preparation* yang diterapkan dalam proyek ini
+1. Menghapus missing value:
+Langkah ini dilakukan untuk memeriksa dan menangani missing value dalam dataet, keberadaan missing value dapat mempengaruhi performa model, sehingga data tanpa missing value akan meningkatkan kualitas hasil model. Proses ini dilakukan menggunakan fungsi dataframe.dropna(), yang akan menghapus baris yang mengandung nilai null pada dataset.
+2. Normalisasi:
+Tahapan normalisasi bertujuan untuk mengubah nilai pada kolom numerik ke dalam skala yang seragam tanpa menghilangkan perbedaan dalam rentang nilai. Dalam proyek ini, kolom rating pada file ratings.csv dinormalisasi menggunakan metode `Min-Max Scaling`. Metode ini bekerja dengan menggunakan nilai minimum dan setiap nilai pada fitur, kemudian membaginya dengan selisih antara nilai maksimum dan nilai minimum pada fitur tersebut.
+3. Splitting:
+Pada tahap ini, dataset akan dipisahkan menjadi dua bagian, yaitu data train dan data test. Data train digunakan untuk melatih model, sementara data test berfungsi untuk memvalidasi model. Dalam proyek ini, pembagian dataset mengikuti proporsi umum, yaitu 80% sebagai data train dan 20% sebagai data test. Proses pembagian diawali dengan mengacak sampel data sebelum membagi dataset tersebut. Pada proses splitting ini, terdapat parameter test_size yang menentukan ukuran data test, yaitu test_size=200000 untuk proyek ini. Selanjutnya, data akan dipisahkan untuk keperluan pemodelan menggunakan teknik slicing dengan format [baris, kolom], seperti [X_train[:, 0], X_train[:, 1], yang berarti mencakup semua baris, kolom pertama, dan kolom kedua.
+
+
+## Model
+Dalam proyek ini digunakan model dengan teknik embedding, yaitu Neural Collaborative Filtering (NCF). NCF adalah sebuah jaringan saraf tiruan yang menerapkan metode collaborative filtering berdasarkan umpan balik implisit, yang mampu merekomendasikan produk berdasarkan interaksi antara pengguna dan item. Sebagai contoh, model ini dapat merekomendasikan film berdasarkan skor rating yang diberikan oleh pengguna. Berikut adalah tahapan untuk mendapatkan daftar rekomendasi film berdasarkan perilaku pengguna, yang dalam hal ini mencakup pemberian rating terhadap film yang telah ditonton:
+
+1. Mengidentifikasi daftar film yang telah ditonton oleh pengguna, kemudian data tersebut dimasukkan ke dalam dataframe baru dengan parameter userId, plot diatur ke False, dan temp diatur bernilai 1.
+2. Menentukan film dengan rating terendah dari data yang sesuai, menggunakan parameter rating_df.userId dengan nilai yang sama seperti userId.
+3. Membuat referensi film terbaik (top_movie_reference) berdasarkan urutan rating dengan parameter sort_values pada kolom "rating" dan pengaturan ascending bernilai False.
+4. Membentuk dataframe baru, user_pref_df, dari dataframe utama movie_df, yang kemudian difilter agar hanya berisi data film yang masuk dalam top_movie_reference. Dalam tahap ini, parameter movie_df difokuskan pada movieId dan menggunakan isin dari top_movie_reference.
+5. Menghitung rata-rata rating dari film yang telah dinilai oleh pengguna, menggunakan parameter rating_df.userId dengan nilai yang sama seperti userId.
+
+Hasil dari sistem rekomendasi ini menunjukkan daftar 10 film teratas, dengan rata-rata rating tertinggi mencapai 5.0/5.0.
+
+| movieId | title                                        | genres                            |
+|---------|----------------------------------------------|-----------------------------------|
+| 25      | Fugitive, The (1993)                        | Thriller                          |
+| 62      | Reservoir Dogs (1992)                       | Crime\|Mystery\|Thriller          |
+| 70      | Raiders of the Lost Ark (Indiana Jones and the...) | Action\|Adventure                |
+| 71      | Clockwork Orange, A (1971)                  | Crime\|Drama\|Sci-Fi\|Thriller    |
+| 89      | Indiana Jones and the Last Crusade (1989)   | Action\|Adventure                 |
+| 147     | American History X (1998)                   | Crime\|Drama                      |
+| 166     | Matrix, The (1999)                          | Action\|Sci-Fi\|Thriller          |
+| 192     | Fight Club (1999)                           | Action\|Crime\|Drama\|Thriller    |
+| 197     | Being John Malkovich (1999)                 | Comedy\|Drama\|Fantasy            |
+| 228     | X-Men (2000)                                | Action\|Adventure\|Sci-Fi         |
+
+## Evaluation
+
+1. Mean Squared Error (MSE)
+Metode Mean Squared Error (MSE) digunakan untuk mengukur sejauh mana kesalahan dalam prediksi. Semakin kecil nilai MSE, mendekati nol, semakin baik hasil prediksi tersebut, karena menunjukkan bahwa prediksi sangat mendekati data asli. Hal ini menjadikan metode ini relevan untuk digunakan dalam evaluasi prediksi di masa mendatang. MSE juga berfungsi sebagai alat evaluasi untuk berbagai model seperti regression, moving average, weighted moving average, dan analisis trendline. Perhitungan MSE dilakukan dengan mengurangi nilai aktual dengan nilai prediksi, mengkuadratkan selisihnya, menjumlahkan seluruh hasil, lalu membaginya dengan jumlah data yang ada. Dalam proyek ini, nilai MSE yang diperoleh adalah 0.06 untuk data testing dan 0.01 untuk data train. Grafik berikut menunjukkan hasil MSE, di mana MSE pada Train mengalami penurunan, sedangkan MSE pada Test cenderung stabil dengan sedikit penurunan yang tidak signifikan
+
+<img src="Hasil\MSE.png" style="zoom:70%;" />
+
+2. Precision
+Precision mengukur ketepatan informasi yang dihasilkan oleh sistem dibandingkan dengan informasi yang dicari oleh pengguna. Dalam proyek ini, nilai precision yang dicapai adalah 1.0000 untuk data training dan 0.0986 untuk data test. Grafik di bawah ini menunjukkan hasil precision, di mana precision pada Train cenderung meningkat, sementara precision pada Test tetap stabil sepanjang pengujian.
+
+<img src="Hasil\Precision.png" style="zoom:70%;" />
+
+3. Recall
+Recall menggambarkan kemampuan sistem untuk menemukan kembali informasi yang relevan. Proyek ini menghasilkan nilai recall sebesar 1.00 untuk data train dan 0.89 untuk data test. Grafik berikut menunjukkan hasil recall, dengan recall pada Train yang terus meningkat, sementara recall pada Test menunjukkan pola menurun dengan sedikit fluktuasi.
+<img src="Hasil\Recall.png" style="zoom:70%;" />
+
+## Conclusions
+Berdasarkan hasil proyek sistem rekomendasi, diperoleh kesimpulan sebagai berikut:
+
+- Nilai Mean Squared Error (MSE) sebesar 0.0.06 untuk data testing dan 0.01 untuk data train.
+- Nilai Precision sebesar 1.0000 untuk data training dan 0.0986
+- Nilai Recall sebesar 1.00 untuk data train dan 0.89 untuk data test
+
