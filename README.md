@@ -86,11 +86,15 @@ Pada tahap ini, dilakukan proses menggabungkan dua set data (data_ratings dan da
 Tahapan normalisasi bertujuan untuk mengubah nilai pada kolom numerik ke dalam skala yang seragam tanpa menghilangkan perbedaan dalam rentang nilai. Dalam proyek ini, kolom rating pada file ratings.csv dinormalisasi menggunakan metode `Min-Max Scaling`. Metode ini bekerja dengan menggunakan nilai minimum dan setiap nilai pada fitur, kemudian membaginya dengan selisih antara nilai maksimum dan nilai minimum pada fitur tersebut.
 4. Encoding
 Pada tahap ini dilakukan proses encoding  untuk mengodekan ID pengguna (userId) dan ID film (movieId) menjadi representasi numerik yang lebih mudah digunakan dalam model pembelajaran mesin dengan semua nilai unik pada kolom userId diubah menjadi daftar dan dibuat dua kamus: 
+
 - encoderUser yang memetakan userId ke indeks numeriknya;
 - encodertoUser yang memetakan sebaliknya, dari indeks numerik ke userId. 
+
 Kolom baru user di dalam dataset kemudian diisi dengan nilai yang dipetakan berdasarkan encoderUser. Jumlah total pengguna unik disimpan dalam n_user. Proses serupa dilakukan untuk movieId, dimana semua nilai unik pada kolom ini diubah menjadi daftar dan dua kamus serupa dibuat: 
+
 - encoderMovie yang memetakan movieId ke indeks numeriknya;
 - encodertoMovie yang memetakan sebaliknya, dari indeks numerik ke movieId.
+
 Kolom baru movie kemudian diisi dengan nilai yang dipetakan berdasarkan encoderMovie, dan jumlah total film unik disimpan dalam n_movie. Proses ini sangat penting untuk persiapan data dalam model pembelajaran mesin, agar ID yang lebih deskriptif menjadi angka sederhana.
 
 5. Splitting:
